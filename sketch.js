@@ -1,5 +1,4 @@
-var s = 60;
-var padding = 20;
+var objectSize, padding, totalSize;
 
 function setup() {
 	// i like my canvas like my browser window 
@@ -10,24 +9,26 @@ function setup() {
 	rectMode(CENTER);
 	angleMode(DEGREES);
 
-	//put your setup code here
+	//put more setup code here
+	objectSize = min(width, height)/20;
+	padding = objectSize/3;
+	totalSize = objectSize + padding;
 }
 
 
 function draw() {
-	
 
-	strokeWeight(s);
+	strokeWeight(objectSize);
 
-	for(var posX = s; posX < width; posX = posX + s + padding) {
-		for(var posY = s; posY < height; posY = posY + s + padding) {
+	for(var posX = totalSize; posX < width - totalSize; posX = posX + totalSize) {
+		for(var posY = objectSize; posY < height - totalSize; posY = posY + totalSize) {
 			point(posX, posY);
 		}
 	}
 
 	noLoop();
-
 }
+
 
 function windowResized() {
 	resizeCanvas(windowWidth, windowHeight);
